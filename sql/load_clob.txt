@@ -1,0 +1,2 @@
+2,two,10-JUN-2014,./sample_file/bi_principle.txt
+1,one,10-JUN-2014,/home/oracle/text/sql/sample_file/rac_inform.txt

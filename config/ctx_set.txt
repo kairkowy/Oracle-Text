@@ -1,0 +1,61 @@
+# Text Dictionary가 생성
+1. SYSDBA로 연결 한 후, 다음과 같이 스크립트를 호출하면, CTXSYS 스키마에 Text Dictionary가 생성된다.
+# sqlplus / as sysdba
+#SQl>  $ORACLE_HOME/ctx/admin/catctx.sql CTXSYS SYSAUX TEMP LOCK 실행
+#SQL> connect CTXSYS/password
+#SQL> $ORACLE_HOME/ctx/admin/defaults/drdefko.sql 실행
+#SQL> conn / as sysdba -- sysdba 로 로긴 후 설치 확인
+#SQL>select comp_name, status, substr(version,1,10) as version
+from dba_registry where comp_id = 'CONTEXT';
+
+COMP_NAME  STATUS  VERSION
+------------------------------  -----------  ------------------------------
+Oracle Text  VALID  11.1.0.7.0
+
+SYS@tsc1>select * from ctxsys.ctx_version;
+
+VER_DICT   VER_CODE
+---------- --------------------
+11.1.0.7.0 11.1.0.7.0
+
+SYS@tsc1>select substr(ctxsys.dri_version,1,10) VER_CODE from dual;
+
+VER_CODE
+--------------------
+11.1.0.7.0
+
+SYS@tsc1>select count(*) from dba_objects where owner='CTXSYS';
+
+  COUNT(*)
+----------
+       372
+
+SYS@tsc1>select object_type, count(*) from dba_objects
+where owner='CTXSYS' group by object_type;
+
+OBJECT_TYPE           COUNT(*)
+------------------- ----------
+SEQUENCE                     3
+PROCEDURE                    2
+OPERATOR                     6
+LOB                          2
+LIBRARY                      1
+PACKAGE                     73
+PACKAGE BODY                62
+TYPE BODY                    7
+TABLE                       47
+INDEX                       56
+VIEW                        71
+FUNCTION                     2
+INDEXTYPE                    4
+TYPE                        36
+
+14 개의 행이 선택되었습니다.
+
+SYS@tsc1>select object_name, object_type, status from dba_objects
+where owner='CTXSYS' and status != 'VALID' order by object_name;
+
+선택된 레코드가 없습니다.
+
+SYS@tsc1>
+

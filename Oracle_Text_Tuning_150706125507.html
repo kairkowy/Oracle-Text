@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'/>
+    <title>Oracle_Text_Tuning.md—D:\Documents\2. product\Database\Oracle_Text\HOL</title>
+    <style type="text/css">
+    body{font-family:Helvetica,arial,sans-serif;font-size:14px;line-height:1.6;padding-top:10px;padding-bottom:10px;background-color:white;padding:30px;color:#333}body>*:first-child{margin-top:0!important}body>*:last-child{margin-bottom:0!important}a{color:#4183c4;text-decoration:none}a:hover{text-decoration:underline}a.absent{color:#c00}a.anchor{display:block;padding-left:30px;margin-left:-30px;cursor:pointer;position:absolute;top:0;left:0;bottom:0}html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0}kbd{background:#f1f1f1;background:-moz-linear-gradient(#f1f1f1,#ddd);background:-webkit-linear-gradient(#f1f1f1,#ddd);-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='#f1f1f1', endColorstr='#dddddd')";border-radius:2px;border:1px solid #ddd;border-bottom-color:#ccc;border-right-color:#ccc;padding:1px 4px;line-height:10px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}.container{max-width:920px;margin:0 auto 20px auto}#header{background:#fafafa;background:-moz-linear-gradient(#fafafa,#eaeaea);background:-webkit-linear-gradient(#fafafa,#eaeaea);-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#eaeaea')";border-bottom:1px solid #cacaca;box-shadow:0 1px 0 rgba(255,255,255,0.4),0 0 10px rgba(0,0,0,0.1)}#markup{padding:3px}#markup article{padding-top:30px}.markdown-body{font-size:14px;line-height:1.6}.markdown-body>*:first-child{margin-top:0!important}.markdown-body>*:last-child{margin-bottom:0!important}.markdown-body a.absent{color:#c00}.markdown-body a.anchor{bottom:0;cursor:pointer;display:block;left:0;margin-left:-30px;padding-left:30px;position:absolute;top:0}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{cursor:text;font-weight:bold;margin:20px 0 10px;padding:0;position:relative}.markdown-body h1 .mini-icon-link,.markdown-body h2 .mini-icon-link,.markdown-body h3 .mini-icon-link,.markdown-body h4 .mini-icon-link,.markdown-body h5 .mini-icon-link,.markdown-body h6 .mini-icon-link{color:#000;display:none}.markdown-body h1:hover a.anchor,.markdown-body h2:hover a.anchor,.markdown-body h3:hover a.anchor,.markdown-body h4:hover a.anchor,.markdown-body h5:hover a.anchor,.markdown-body h6:hover a.anchor{line-height:1;margin-left:-22px;padding-left:0;text-decoration:none;top:15%}.markdown-body h1:hover a.anchor .mini-icon-link,.markdown-body h2:hover a.anchor .mini-icon-link,.markdown-body h3:hover a.anchor .mini-icon-link,.markdown-body h4:hover a.anchor .mini-icon-link,.markdown-body h5:hover a.anchor .mini-icon-link,.markdown-body h6:hover a.anchor .mini-icon-link{display:inline-block}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{font-size:inherit}.markdown-body h1{color:#000;font-size:28px}.markdown-body h2{border-bottom:1px solid #ccc;color:#000;font-size:24px}.markdown-body h3{font-size:18px}.markdown-body h4{font-size:16px}.markdown-body h5{font-size:14px}.markdown-body h6{color:#777;font-size:14px}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre{margin:15px 0}.markdown-body hr{background:url("/public/github-dirty-shade.png") repeat-x scroll 0 0 transparent;border:0 none;color:#ccc;height:4px;padding:0}.markdown-body>h2:first-child,.markdown-body>h1:first-child,.markdown-body>h1:first-child+h2,.markdown-body>h3:first-child,.markdown-body>h4:first-child,.markdown-body>h5:first-child,.markdown-body>h6:first-child{margin-top:0;padding-top:0}.markdown-body a:first-child h1,.markdown-body a:first-child h2,.markdown-body a:first-child h3,.markdown-body a:first-child h4,.markdown-body a:first-child h5,.markdown-body a:first-child h6{margin-top:0;padding-top:0}.markdown-body h1+p,.markdown-body h2+p,.markdown-body h3+p,.markdown-body h4+p,.markdown-body h5+p,.markdown-body h6+p{margin-top:0}.markdown-body li p.first{display:inline-block}.markdown-body ul,.markdown-body ol{padding-left:30px}.markdown-body ul.no-list,.markdown-body ol.no-list{list-style-type:none;padding:0}.markdown-body ul li>*:first-child,.markdown-body ol li>*:first-child{margin-top:0}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-bottom:0}.markdown-body dl{padding:0}.markdown-body dl dt{font-size:14px;font-style:italic;font-weight:bold;margin:15px 0 5px;padding:0}.markdown-body dl dt:first-child{padding:0}.markdown-body dl dt>*:first-child{margin-top:0}.markdown-body dl dt>*:last-child{margin-bottom:0}.markdown-body dl dd{margin:0 0 15px;padding:0 15px}.markdown-body dl dd>*:first-child{margin-top:0}.markdown-body dl dd>*:last-child{margin-bottom:0}.markdown-body blockquote{border-left:4px solid #ddd;color:#777;padding:0 15px}.markdown-body blockquote>*:first-child{margin-top:0}.markdown-body blockquote>*:last-child{margin-bottom:0}.markdown-body table{border-collapse:collapse;border-spacing:0}.markdown-body table th{font-weight:bold}.markdown-body table th,.markdown-body table td{border:1px solid #ccc;padding:6px 13px}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{border:1px solid #ddd;display:block;float:left;margin:13px 0 0;overflow:hidden;padding:7px;width:auto}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}.markdown-body span.align-center{clear:both;display:block;overflow:hidden}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{clear:both;display:block;overflow:hidden}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{background-color:#f8f8f8;border:1px solid #eaeaea;border-radius:3px 3px 3px 3px;margin:0 2px;padding:0 5px;white-space:nowrap}.markdown-body pre>code{background:none repeat scroll 0 0 transparent;border:medium none;margin:0;padding:0;white-space:pre}.markdown-body .highlight pre,.markdown-body pre{background-color:#f8f8f8;border:1px solid #ccc;border-radius:3px 3px 3px 3px;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px}.markdown-body pre code,.markdown-body pre tt{background-color:transparent;border:medium none}.codehilite{background:#fff}.codehilite .c{color:#998;font-style:italic}.codehilite .err{color:#a61717;background-color:#e3d2d2}.codehilite .k{color:#000;font-weight:bold}.codehilite .o{color:#000;font-weight:bold}.codehilite .cm{color:#998;font-style:italic}.codehilite .cp{color:#999;font-weight:bold}.codehilite .c1{color:#998;font-style:italic}.codehilite .cs{color:#999;font-weight:bold;font-style:italic}.codehilite .gd{color:#000;background-color:#fdd}.codehilite .gd .x{color:#000;background-color:#faa}.codehilite .ge{color:#000;font-style:italic}.codehilite .gr{color:#a00}.codehilite .gh{color:#999}.codehilite .gi{color:#000;background-color:#dfd}.codehilite .gi .x{color:#000;background-color:#afa}.codehilite .go{color:#888}.codehilite .gp{color:#555}.codehilite .gs{font-weight:bold}.codehilite .gu{color:#aaa}.codehilite .gt{color:#a00}.codehilite .kc{color:#000;font-weight:bold}.codehilite .kd{color:#000;font-weight:bold}.codehilite .kp{color:#000;font-weight:bold}.codehilite .kr{color:#000;font-weight:bold}.codehilite .kt{color:#458;font-weight:bold}.codehilite .m{color:#099}.codehilite .s{color:#d14}.codehilite .na{color:#008080}.codehilite .nb{color:#0086b3}.codehilite .nc{color:#458;font-weight:bold}.codehilite .no{color:#008080}.codehilite .ni{color:#800080}.codehilite .ne{color:#900;font-weight:bold}.codehilite .nf{color:#900;font-weight:bold}.codehilite .nn{color:#555}.codehilite .nt{color:#000080}.codehilite .nv{color:#008080}.codehilite .ow{color:#000;font-weight:bold}.codehilite .w{color:#bbb}.codehilite .mf{color:#099}.codehilite .mh{color:#099}.codehilite .mi{color:#099}.codehilite .mo{color:#099}.codehilite .sb{color:#d14}.codehilite .sc{color:#d14}.codehilite .sd{color:#d14}.codehilite .s2{color:#d14}.codehilite .se{color:#d14}.codehilite .sh{color:#d14}.codehilite .si{color:#d14}.codehilite .sx{color:#d14}.codehilite .sr{color:#009926}.codehilite .s1{color:#d14}.codehilite .ss{color:#990073}.codehilite .bp{color:#999}.codehilite .vc{color:#008080}.codehilite .vg{color:#008080}.codehilite .vi{color:#008080}.codehilite .il{color:#099}
+    </style>
+    <style type="text/css">
+      .markdown-body hr{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC")}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="markup">
+        <article id="content" class="markdown-body">
+          <h3>Oracle Text Tuning</h3>
+<p>Oracle Text는 쿼리와 색인의 성능 향상을 위한 방법을 제공합니다.  </p>
+<h4>통계정보 수집을 통한 쿼리 최적화</h4>
+<p>쿼리 성능 향상을 위하여 테이블 및 인덱스의 통계정보 수집으로 효율적인 실행계획 수립이 필요합니다. "CONTAINS" 조건절에 대한 정확한 selectivity, Cost를 얻고 더 나은 실행계획 수립을 위해 통계정보 수집을 권고합니다.  </p>
+<p>Oracle Optimizer는 아래 조건을 기준으로 최적화 실행계획을 수립합니다.  </p>
+<ul>
+<li>CONTAINS의 조건절에 의한 선택도 기준</li>
+<li>쿼리의 다른 조건절에 의한 선택도 기준  </li>
+<li>CONTAINS 조건절을 처리하기 위한 CPU,I/O 비용 기준</li>
+</ul>
+<h5>통계정보 수집</h5>
+<p>Oracle text는 CBO를 기본적으로 사용합니다. 더 Cost를 얻기 위해 text가 둘어 있는 Table과 Context Index(색인 DB)의 통계정보를 수집하기 위한 예는 아래와 같습니다.</p>
+<div class="codehilite"><pre><span class="k">ANALYZE</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span> <span class="n">COMPUTE</span> <span class="k">STATISTICS</span><span class="p">;</span>
+<span class="k">or</span>
+<span class="k">ANALYZE</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span> <span class="n">ESTIMATE</span> <span class="k">STATISTICS</span> <span class="mi">1000</span> <span class="k">ROWS</span><span class="p">;</span>
+<span class="k">or</span>
+<span class="k">ANALYZE</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span> <span class="n">ESTIMATE</span> <span class="k">STATISTICS</span> <span class="mi">50</span> <span class="n">PERCENT</span><span class="p">;</span>
+<span class="k">or</span>
+<span class="k">begin</span>
+<span class="n">DBMS_STATS</span><span class="p">.</span><span class="n">GATHER_TABLE_STATS</span><span class="p">(</span><span class="s1">&#39;owner&#39;</span><span class="p">,</span> <span class="s1">&#39;table_name&#39;</span><span class="p">,</span>
+                                       <span class="n">estimate_percent</span><span class="o">=&gt;</span><span class="mi">50</span><span class="p">,</span>
+                                       <span class="n">block_sample</span><span class="o">=&gt;</span><span class="k">TRUE</span><span class="p">,</span>
+                                       <span class="n">degree</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">)</span> <span class="p">;</span>
+<span class="k">end</span>  <span class="p">;</span>
+</pre></div>
+
+
+<h4>통계정보 재 수집</h4>
+<div class="codehilite"><pre><span class="k">ANALYZE</span> <span class="k">INDEX</span> <span class="o">&lt;</span><span class="n">index_name</span><span class="o">&gt;</span> <span class="n">COMPUTE</span> <span class="k">STATISTICS</span><span class="p">;</span>
+<span class="k">or</span>
+<span class="k">ANALYZE</span> <span class="k">INDEX</span> <span class="o">&lt;</span><span class="n">index_name</span><span class="o">&gt;</span> <span class="n">ESTIMATE</span> <span class="k">STATISTICS</span> <span class="n">SAMPLE</span> <span class="mi">50</span> <span class="n">PERCENT</span><span class="p">;</span>
+</pre></div>
+
+
+<h4>통계정보 삭제</h4>
+<div class="codehilite"><pre><span class="k">ANALYZE</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table_name</span><span class="o">&gt;</span> <span class="k">DELETE</span> <span class="k">STATISTICS</span><span class="p">;</span>
+<span class="k">or</span>
+<span class="k">ANALYZE</span> <span class="k">INDEX</span> <span class="o">&lt;</span><span class="n">index_name</span><span class="o">&gt;</span> <span class="k">DELETE</span> <span class="k">STATISTICS</span><span class="p">;</span>
+</pre></div>
+
+
+<h4>Response time을 위한 최적화 쿼리</h4>
+<p>Oracle Text는 기본적으로 가능한 짧은 시간에 모든 row들을 반환하는 'throughput'을 기준으로 쿼리들을 최적화 합니다. 그러나 일반적으로 많은 Application에서는 Response time 향상을 위해서 반환되는 전체 Rows 중에 처음 몇 개의 Row들을 사용하는 경우가 있습니다.  </p>
+<p>이런 경우를 위해서 Oracle Text는 아래와 같이 CONTAINS 쿼리의 Response Time 향상을 위한 몇 가지 방법을 제공합니다.  </p>
+<div class="codehilite"><pre><span class="mf">1.</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="err">쿼리를</span> <span class="err">위한</span> <span class="s">&quot;FIRST_ROW(N)&quot;</span> <span class="err">힌트를</span> <span class="err">이용하는</span> <span class="err">방법</span>
+<span class="mf">2.</span> <span class="n">Local</span> <span class="n">Partititoned</span> <span class="n">Context</span> <span class="n">index</span><span class="err">를</span> <span class="err">이용하는</span> <span class="err">방법</span>
+<span class="mf">3.</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">Score</span><span class="err">를</span> <span class="err">위한</span> <span class="n">Local</span> <span class="n">Partitioned</span> <span class="n">Index</span><span class="err">를</span> <span class="err">이용하는</span> <span class="err">방법</span>
+<span class="mf">4.</span> <span class="n">Query</span> <span class="n">Filter</span> <span class="n">Cache</span> <span class="err">방법</span>
+<span class="mf">5.</span> <span class="n">CONTEXT</span> <span class="n">Index</span><span class="err">의</span> <span class="n">BIG_IO</span> <span class="n">option</span> <span class="err">이용하는</span> <span class="err">방법</span>
+<span class="mf">6.</span> <span class="n">CONTEXT</span> <span class="n">Index</span><span class="err">의</span> <span class="n">SEPARATE_OFFSETS</span> <span class="n">Option</span> <span class="err">이용하는</span> <span class="err">방법</span>
+<span class="mf">7.</span> <span class="n">CONTEXT</span> <span class="n">Index</span><span class="err">의</span> <span class="n">STAGE_ITAB</span> <span class="n">Option</span> <span class="err">이용하는</span> <span class="err">방법</span>
+</pre></div>
+
+
+<ul>
+<li>Response time에 영향을 주는 다른 Factor들<ul>
+<li>Collection of table statistics</li>
+<li>Memory allocation</li>
+<li>Sorting</li>
+<li>Presence of LOB columns in your base table</li>
+<li>Partitioning</li>
+<li>Parallelism</li>
+<li>The number term expansions in your query</li>
+</ul>
+</li>
+</ul>
+<h5>ORDER BY 쿼리를 위한 "FIRST_ROWS" 힌트를 이용하는 방법</h5>
+<p>이 방법은 'ORDER BY' 쿼리에서 처음 몇 개의 Row가 필요한 경우에 'FIRST_ROWS(N)' 사용을 권장합니다. hint가 없는 경우에는 조건절에 부합하는 Text index의 모든 row들을 정렬이 않된 상태로 반환한 후에 Rowid로 소팅을 하게 되어 Response time에는 부정인 결과가 나타날 수 있습니다. </p>
+<p>예제)</p>
+<div class="codehilite"><pre><span class="k">select</span> <span class="cm">/*+ FIRST_ROWS(10) */</span> <span class="n">article_id</span> <span class="k">from</span> <span class="n">articles_tab</span>
+   <span class="k">where</span> <span class="k">contains</span><span class="p">(</span><span class="n">article</span><span class="p">,</span> <span class="s1">&#39;Omophagia&#39;</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">order</span> <span class="k">by</span> <span class="n">pub_date</span> <span class="k">desc</span><span class="p">;</span>
+</pre></div>
+
+
+<ul>
+<li>참고 : 'DOMAIN_INDEX_SORT' Hint 사용<br>
+DOMAIN_INDEX_SORT Hint는 'First_rows'와 유사한 hint이지만 Rule base 기반의 hint입니다. Oracle은 성능 향상을 위한 방법으로 cost-based 기반의 hint 사용을 권장합니다.  </li>
+</ul>
+<p>예제) </p>
+<div class="codehilite"><pre><span class="k">select</span> <span class="cm">/*+ DOMAIN_INDEX_SORT */</span> <span class="n">pk</span><span class="p">,</span> <span class="n">score</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">col</span> <span class="k">from</span> <span class="n">ctx_tab</span> 
+            <span class="k">where</span> <span class="k">contains</span><span class="p">(</span><span class="n">txt_col</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> 
+            <span class="k">order</span> <span class="k">by</span> <span class="n">score</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">desc</span><span class="p">;</span>
+</pre></div>
+
+
+<h5>Local Partititoned Context index를 이용하는 방법</h5>
+<p>데이터를 파티셔닝하고 Local partitioned index를 만든 것은 쿼리 성능 향상을 가능하게 합니다. 
+파티션된 Table에서 각 파티션은 자신의 index table을 가지고 있지만 최종결과는 통합된 결과로 나타납니다. 
+ 이 방법을 사용하기 위해서는 아래와 같이 Context index(색인)를 만들 때 'LOCAL' 키워드를 사용하여 색인 DB를 만들어 주면 됩니다.</p>
+<div class="codehilite"><pre><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">index_name</span> <span class="k">ON</span> <span class="k">table_name</span> <span class="p">(</span><span class="k">column_name</span><span class="p">)</span> 
+<span class="n">INDEXTYPE</span> <span class="k">IS</span> <span class="n">ctxsys</span><span class="p">.</span><span class="n">context</span>
+<span class="k">PARAMETERS</span> <span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+<span class="k">LOCAL</span>
+</pre></div>
+
+
+<p>파티션 table과 인덱스를 이용하는 것은 다음 2개 형태의 쿼리들에서 성능 향상을 기대할 수 있습니다.</p>
+<ul>
+<li>Partition key 컬럼으로 Range search 경우</li>
+</ul>
+<p>예제)</p>
+<div class="codehilite"><pre><span class="k">SELECT</span> <span class="n">storyid</span> <span class="k">FROM</span> <span class="n">storytab</span> <span class="k">WHERE</span> <span class="k">CONTAINS</span><span class="p">(</span><span class="n">story</span><span class="p">,</span> <span class="s1">&#39;oliver&#39;</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> 
+<span class="k">and</span> <span class="n">pub_date</span> <span class="k">BETWEEN</span> <span class="s1">&#39;1-OCT-93&#39;</span> <span class="k">AND</span> <span class="s1">&#39;1-NOV-93&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<ul>
+<li>파티션 키 column으로 ORDER BY 하는 경우<br>
+이 방법은 아래 예제(price로 파티션된 table)와 같이 파티션 키를 ORDER BY 절에 사용하여 첫 n 개를 필요로 하는 쿼리에 사용하는 방법입니다. </li>
+</ul>
+<p>예제)</p>
+<div class="codehilite"><pre><span class="k">SELECT</span> <span class="n">itemid</span> <span class="k">FROM</span> <span class="n">item_tab</span> <span class="k">WHERE</span> <span class="k">CONTAINS</span><span class="p">(</span><span class="n">item_desc</span><span class="p">,</span> <span class="s1">&#39;cd player&#39;</span><span class="p">)</span>
+  <span class="o">&gt;</span><span class="mi">0</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">price</span><span class="p">)</span>  <span class="k">WHERE</span> <span class="n">ROWNUM</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">;</span>
+</pre></div>
+
+
+<h5>ORDER BY Score를 위한 Local Partitioned Index를 이용하는 방법</h5>
+<p>ORDER BY Score를 사용하여 DOMAIN_INDEX_SORT hint 사용할 경우에 쿼리 결과가 정렬되어지기 전에 모든 파티션에서 결과를 가져와야 하기 때문에 좋지 않은 성능 결과를 얻을 수 있습니다. </p>
+<p>DOMAIN_INDEX_SORT hint를 사용할 경우에는 Inline view를 사용하여 성능 문제를 해결 할 수 있는 방법이 있습니다.</p>
+<div class="codehilite"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> 
+          <span class="p">(</span><span class="k">select</span> <span class="cm">/*+ DOMAIN_INDEX_SORT */</span> <span class="n">doc_id</span><span class="p">,</span> <span class="n">score</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">from</span> <span class="n">doc_tab</span> 
+              <span class="k">where</span> <span class="k">contains</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s1">&#39;oracle&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">order</span> <span class="k">by</span> <span class="n">score</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">desc</span><span class="p">)</span> 
+      <span class="k">where</span> <span class="n">rownum</span> <span class="o">&lt;</span> <span class="mi">21</span><span class="p">;</span>
+</pre></div>
+
+
+<h5>Query Filter Cache 방법</h5>
+<p>Oracle text는 Query 결과를 캐시할 수 있는 'Query Filyter Cache'라는 cache를 제공합니다. 'Query Filyter Cache'는 쿼리간에 공유가 가능함에 따라 다른 캐시된 쿼리결과를 다른 쿼리에서 재사용를 할 수 있습니다. 
+방법은 아래 예제와 같이 'Ctxfiltercache'연산자를 사용해야 합니다.</p>
+<p>예제)</p>
+<div class="codehilite"><pre><span class="n">select</span> <span class="o">*</span> <span class="n">from</span> <span class="n">docs</span> <span class="n">where</span> <span class="n">contains</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">ctxfiltercache</span><span class="p">((</span><span class="n">common_predicate</span><span class="p">),</span> <span class="n">FALSE</span><span class="p">)</span><span class="err">&#39;</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="n">select</span> <span class="o">*</span> <span class="n">from</span> <span class="n">docs</span> <span class="n">where</span> <span class="n">contains</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">new_query</span> <span class="o">&amp;</span> <span class="n">ctxfiltercache</span><span class="p">((</span><span class="n">common_predicate</span><span class="p">),</span> <span class="n">FALSE</span><span class="p">)</span><span class="err">&#39;</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span> 
+</pre></div>
+
+
+<p><em>ctxfiltercache에 대한 자세한 내용은 Oracle Text Reference</em>를 참조하십시오.</p>
+<h5>CONTEXT Index의 BIG_IO option 이용하는 방법</h5>
+<p>이 방법은 광범위한 I/O 연산이 일어 나는 Context Index의 성능 향상(response time)을 위한 방법이며, Disk 방식의 스토리지를 사용하는 DB 환경에서 성능 향상을 얻기 위한 방법입니다.</p>
+<p>BIG_IO option을 사용한 CONTEXT Index들은 SecureFile LOB에 토큰이 저장 되고, 이 SecureFile LOB의 데이터는 멀티 블럭에 시쿼셜하게 저장된다. 이렇게 저장된 것은 많은 짧은 Read 작업 대신에 긴 시퀀셜 read를 실행하여 쿼리들의 response time을 향상시킵니다.</p>
+<ul>
+<li>Note :<br>
+    SecureFile은 11.0 이상으로 COMPATIBLE 설정이 필요하며, ASSM tablespace를 사용해야함.</li>
+</ul>
+<p>BIG_IO option 사용 방법은 아래와 같이 BIG_IO 속성을 "YES"로 지정하고 CONTEXT index를 생성합니다.</p>
+<div class="codehilite"><pre><span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">create_preference</span><span class="p">(</span><span class="s1">&#39;mystore&#39;</span><span class="p">,</span> <span class="s1">&#39;BASIC_STORAGE&#39;</span><span class="p">);</span>
+<span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;mystore&#39;</span><span class="p">,</span> <span class="s1">&#39;BIG_IO&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>BIG_IO option Disable 방법은 아래와 같이 BIG_IO 속성을 "NO"로 지정한 후에 Index를 rebuild 해주면 됩니다.</p>
+<div class="codehilite"><pre><span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;mystore&#39;</span><span class="p">,</span> <span class="s1">&#39;BIG_IO&#39;</span><span class="p">,</span> <span class="s1">&#39;NO&#39;</span><span class="p">);</span>
+<span class="k">alter</span> <span class="k">index</span> <span class="n">idx</span> <span class="n">rebuild</span><span class="p">(</span><span class="s1">&#39;replace storage mystore&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Index 재생성 없이 파티션 인덱스의 BIG_IO 지정은 아래와 같은 방법으로 수행해줍니다.</p>
+<div class="codehilite"><pre><span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;mystore&#39;</span><span class="p">,</span> <span class="s1">&#39;BIG_IO&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">);</span>
+<span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">replace_index_metadata</span><span class="p">(</span><span class="s1">&#39;idx&#39;</span><span class="p">,</span> <span class="s1">&#39;replace storage mystore&#39;</span><span class="p">);</span>
+<span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">optimize_index</span><span class="p">(</span><span class="s1">&#39;idx&#39;</span><span class="p">,</span> <span class="s1">&#39;rebuild&#39;</span><span class="p">,</span> <span class="n">part_name</span><span class="o">=&gt;</span><span class="s1">&#39;part1&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h5>CONTEXT Index의 SEPARATE_OFFSETS Option 이용하는 방법</h5>
+<p>이 방법은 주로 Single-word 또는 Boolean 쿼리 I/O operaion이 광범위 하게 일어나는 Context Index의 성능 향상(response time)을 위한 방법으로 사용합니다.이 'SEPARATE_OFFSETS' option은 TEXT 형식의 토큰들을 위하여 다른 포스팅 목록 구조를 만듭니다.  </p>
+<p>'SEPARATE_OFFSETS Option'은 포스팅 리스트에 docid,Frequencies, Info-length(오프셋 정보 길이)와 오프셋을 산재시키는 대신에 포스팅 목록의 시작 부분에 모든 docid, frequencies를 함께 저장하고, 포스팅의 끝 부분에 모든 Info-lenght와 offset을 저장한다. </p>
+<p>포스팅의 시작 header에는 docid 및 Offset에 대한 정보를 포함하고 있고, 이렇게  docid들과 frequencies를 offset들과 분리한 것은 데이터를 읽는 시간을 단축시킴으로써 쿼리 reponsee time을 향상시키기 위함입니다. 이 Option의 성능은 BIG_IO option과 함께 사용하면 최상의 효과를 얻습니다.  </p>
+<p>'SEPARATE_OFFSETS Option' 사용하는 방법은 다음과 같습니다.</p>
+<div class="codehilite"><pre><span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">create_preference</span><span class="p">(</span><span class="s1">&#39;mystore&#39;</span><span class="p">,</span> <span class="s1">&#39;BASIC_STORAGE&#39;</span><span class="p">);</span>
+<span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;mystore&#39;</span><span class="p">,</span> <span class="s1">&#39;SEPARATE_OFFSETS&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>SEPARATE_OFFSETS Option' Disable 방법은 다음과 같습니다.</p>
+<div class="codehilite"><pre><span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;mystore&#39;</span><span class="p">,</span> <span class="s1">&#39;SEPARATE_OFFSETS&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">);</span>
+<span class="k">alter</span> <span class="k">index</span> <span class="n">idx</span> <span class="n">rebuild</span><span class="p">(</span><span class="s1">&#39;replace storage mystore&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Index rebuild없이 파티션 Index에 적용하는 방법은 다음과 같습니다.</p>
+<div class="codehilite"><pre><span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;mystore&#39;</span><span class="p">,</span> <span class="s1">&#39;SEPARATE_OFFSETS&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">);</span>
+<span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">replace_index_metadata</span><span class="p">(</span><span class="s1">&#39;idx&#39;</span><span class="p">,</span> <span class="s1">&#39;replace storage mystore&#39;</span><span class="p">);</span>
+<span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">optimize_index</span><span class="p">(</span><span class="s1">&#39;idx&#39;</span><span class="p">,</span> <span class="s1">&#39;rebuild&#39;</span><span class="p">,</span> <span class="n">part_name</span><span class="o">=&gt;</span><span class="s1">&#39;part1&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h5>CONTEXT Index의 STAGE_ITAB Option 이용하는 방법</h5>
+<p>이 방법은 광범위 하게 DML 작업이 많은 경우 Near real-time Indexing을 위한 방법을 제공합니다.</p>
+<p>이 Option을 사용하지 않는 다면, 새로운 문서가 추가 될때마나 문서 검색이 가능하도록 SYNC_INDEX를 해야 하고, 문서가 추가되는 것은 $I Table에 새로운 row를 추가하는 것인데, 이 경우 $I table의 fragmentation이 심해지면서 성능이 떨어집니다.</p>
+<p>이 Option을 사용하면 새로 추가된 문서의 정보는 $I table에 저장되지 않고 $G 스태이징 table에 저장됩니다. 또한, 이 Option 하에서는 $H b-tree Index도 $G table에 저장됩니다. $G table과 $H B-tree index는 $I table과 $X B-tree Index에 해당합니다.</p>
+<p>MERGE optimizer mode를 사용해서 $G Table의 Row들을 $I Table로 이동합니다.</p>
+<p>이 Optiom을 적용하는 방법은 아래와 같이 스토리지 속성을 지정해주고 파티션 유무에 따라 해당하는 방법으로 Index를 Rebuild를 해줍니다.</p>
+<div class="codehilite"><pre><span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">create_preference</span><span class="p">(</span><span class="s1">&#39;mystore&#39;</span><span class="p">,</span> <span class="s1">&#39;BASIC_STORAGE&#39;</span><span class="p">);</span>
+<span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;mystore&#39;</span><span class="p">,</span> <span class="s1">&#39;STAGE_ITAB&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>파티션이 없는 경우는 아래와 같은 방법으로 이 Option을 적용합니다.</p>
+<div class="codehilite"><pre><span class="k">alter</span> <span class="k">index</span> <span class="n">IDX</span> <span class="n">rebuild</span> <span class="k">parameters</span><span class="p">(</span><span class="s1">&#39;replace storage mystore&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>파티션된 경우는 아래와 같은 방법으로 이 Option을 적용합니다.</p>
+<div class="codehilite"><pre><span class="k">alter</span> <span class="k">index</span> <span class="n">idx</span> <span class="k">parameters</span><span class="p">(</span><span class="s1">&#39;add stage_itab&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>파티션이 없는 경우는 해제 하는 방법은 다음과 같습니다.</p>
+<div class="codehilite"><pre><span class="k">exec</span> <span class="n">ctx_ddl</span><span class="p">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;mystore&#39;</span><span class="p">,</span> <span class="s1">&#39;STAGE_ITAB&#39;</span><span class="p">,</span> <span class="s1">&#39;NO&#39;</span><span class="p">);</span>
+<span class="k">alter</span> <span class="k">index</span> <span class="n">idx</span> <span class="n">rebuild</span><span class="p">(</span><span class="s1">&#39;replace storage mystore&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>파티션된 경우 해제하는 방법은 다음과 같습니다. </p>
+<div class="codehilite"><pre><span class="k">alter</span> <span class="k">index</span> <span class="n">idx</span> <span class="k">parameters</span><span class="p">(</span><span class="s1">&#39;remove stage_itab&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h4>Throughput을 위한 최적화 쿼리</h4>
+<p>Thtoughput 쿼리 최적화는 가능한 짧은 시간 내에 모든 Hit 리스트들을 반환하는 방법으로 deafult 로 작동됩니다.</p>
+<p>다음은 명시적으로 처리량을 최적화 방법을 기술합니다.</p>
+<h5>CHOOSE and ALL ROWS Modes</h5>
+<p>쿼리들은 기본적으로 'CHOOSE'와 'ALL_ROWS' mode 작동합니다. </p>
+<h5>FIRST_ROWS(n) Mode</h5>
+<p>이 모드에서 옵티마이저는 빠른 response time을 위하여 'FIRST_ROWS(n)' 힌트를 사용할 때 기본으로 작동하여 score로 정렬된 Rows들을 반환합니다. </p>
+<p>'FIRST_ROWS(n)' 하에서 더 좋은 Throughput을 얻기 위한다면 'DOMAIN_INDEX_NO_SORT' 힌트를 사용할 수 있습니다. </p>
+<p>예제)</p>
+<div class="codehilite"><pre><span class="k">select</span> <span class="cm">/*+ FIRST_ROWS(10) DOMAIN_INDEX_NO_SORT */</span> <span class="n">pk</span><span class="p">,</span> <span class="n">score</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">col</span> <span class="k">from</span> <span class="n">ctx_tab</span> 
+            <span class="k">where</span> <span class="k">contains</span><span class="p">(</span><span class="n">txt_col</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">order</span> <span class="k">by</span> <span class="n">score</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">desc</span><span class="p">;</span>
+</pre></div>
+
+
+<h4>Composite Domain Index (CDI)</h4>
+<p>Composite Domain Index(CDI)는 단순하게 색인과 지정된 text column만을 처리 하지 않고, 색인이 만들어 지는 동안 구조화된 Column들을 Filter by와 Order by 처리를 하고 인덱싱을 합니다. 다음은 CDI 환경에서 성능 향상을 위한 방법입니다. </p>
+<ul>
+<li>WHERE절 Text 쿼리</li>
+<li>ORDER BY Text 쿼리</li>
+<li>두가지 방법을 조합하여 사용하는 방법</li>
+</ul>
+<p>연결된 B-tree index 또는 Bitmap Index 환경의 DML에서 Filter by와 Order by Column이 늘어 날 때 성능이 저하되는 현상이 발생합니다. </p>
+<p>Score-sort시 응답시간을 최적화하는 방법은 Structured Sort 또는 Socre와 Structured Sort의 조합을 사용하는 방법입니다. Throughput이 향상 되는 것은 아니며, 전체 hitlist들을 가져오는 동안 CDI에 푸시시켜 정렬하는 DOMAIN_INDEX_SORT 또는 FIRST_ROWS(N) 힌트 사용하는 것은 Response time 성능에 안좋은 결과를 낼 수 있습니다.</p>
+<h5>CDI 성능 튜닝</h5>
+<p>MDATA를 위한 FILTER BY column 매핑 지원은 RANGE와 Like 함수 제한을 통한 equality search의 최적화된 쿼리 성능을 지원합니다. 그러나 매우 높은 카디널리티를 가지고 있거나, FILTER BY column에 순차적인 값이 포함된 경우는 MDATA를 위한 FILTER BY column 매핑은 권고하지 않습니다. 매우 길고 좁은 $I 테이블 및 $X 성능이 저하 될 수 있습니다. 대표적인 예는 Date값을 사용한 column일 것입니다.
+이러한 Sequential column 매핑은 SDATA에 사용 하는 것이 좋습니다.</p>
+<p>다음 힌트들은 SORT를 넣거나 뺴서 사용할 수 있고, CDI FILTER BY 조건에 사용할 수 있습니다. </p>
+<ul>
+<li>DOMAIN_INDEX_SORT : 옵티마이가 지정 된 Composite domain index로 해당 정렬 기준을 push함.</li>
+<li>DOMAIN_INDEX_NO_SORT : 옵티마이저가 지정 된 Composite domain index로 해당 정렬 기준을 push 하지 않음.</li>
+<li>DOMAIN_INDEX_FILTER(table name index name) : 옵티마이저가 지정된 Composite domain index에 해당 FILTER by를 push함. </li>
+<li>DOMAIN_INDEX_NO_FILTER(table name index name) : 옵티마이저가 지정된 Composite domain index에 해당 FILTER by를 push 하지 않음.</li>
+</ul>
+<p>CDI hint 예제)</p>
+<div class="codehilite"><pre><span class="k">SELECT</span> <span class="n">bookid</span><span class="p">,</span> <span class="n">pub_date</span><span class="p">,</span> <span class="k">source</span> <span class="k">FROM</span>
+  <span class="p">(</span><span class="k">SELECT</span> <span class="cm">/*+ domain_index_sort domain_index_filter(books books_ctxcdi) */</span> <span class="n">bookid</span><span class="p">,</span> <span class="n">pub_date</span><span class="p">,</span> <span class="k">source</span>
+      <span class="k">FROM</span> <span class="n">books</span>
+      <span class="k">WHERE</span> <span class="k">CONTAINS</span><span class="p">(</span><span class="nb">text</span><span class="p">,</span> <span class="s1">&#39;aaa&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">AND</span> <span class="n">bookid</span> <span class="o">&gt;=</span> <span class="mi">80</span>
+      <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">PUB_DATE</span> <span class="k">desc</span> <span class="n">nulls</span> <span class="k">last</span><span class="p">,</span> <span class="k">SOURCE</span> <span class="k">asc</span>  <span class="n">nulls</span> <span class="k">last</span><span class="p">,</span> <span class="n">score</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">desc</span><span class="p">)</span>
+ <span class="k">WHERE</span> <span class="n">rownum</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">;</span>
+</pre></div>
+
+
+<h4>Solving Index and Query Bottlenecks Using Tracing</h4>
+<p>Oracle text는 색인과 쿼리의 병목현상을 식별 할 수 있는 선정의된 trace 집합을 제공합니다. 각 trace는 고유의 숫자로 식별이 되고 CTX_OUTPUT으로 표시됩니다.<br>
+Trace 누적 카운트는 다음과 같습니다.</p>
+<div class="codehilite"><pre><span class="mf">1.</span> <span class="n">trace</span> <span class="err">시작</span>
+<span class="mf">2.</span> <span class="n">Operation</span><span class="err">을</span> <span class="err">실행</span><span class="p">.</span> <span class="n">Oracel</span> <span class="n">text</span><span class="err">는</span> <span class="n">Activity</span><span class="err">들을</span> <span class="err">측정하여</span> <span class="n">trace</span> <span class="err">결과들을</span> <span class="err">합산한다</span><span class="p">.</span> 
+<span class="mf">3.</span> <span class="n">step2</span><span class="err">에서</span> <span class="err">수행한</span> <span class="err">모든</span> <span class="n">operation</span><span class="err">이</span> <span class="err">수행한</span> <span class="n">total</span> <span class="err">값인</span> <span class="n">trace</span> <span class="err">값을</span> <span class="err">검색한다</span><span class="p">.</span>
+<span class="mf">4.</span> <span class="n">Trace</span><span class="err">를</span> <span class="mi">0</span><span class="err">으로</span> <span class="err">리셋</span> <span class="err">한다</span><span class="p">.</span>
+<span class="mf">5.</span> <span class="n">step</span> <span class="mi">2</span><span class="err">부터</span> <span class="err">시작한다</span><span class="p">.</span> 
+</pre></div>
+
+
+<p>예를 들면, step 2에서 쿼리 1은 $I에서 15개의 row는 선택하고, 쿼리 2는 $I에서 17개의 row를 선택하는 2개의 쿼리를 실행 했다면, step 3의 trace의 값은 32가 될 것입니다.</p>
+<p>trace는 단일 세션 내에서 발생하는 operation들을 측정할 수 있으나 세션간에는 측정할 수 없습니다. </p>
+<p>trace가 활성화  된 경우에는 parallel sync 또는 최적화 동안에 trace profile은 slave session을 위해 복사 될 것입니다. 각 salve는 자신의 trace를 합산해 갈 것이고, 암시적으로 종료전에 slave logfile에 모든 trace 값을 기록할 것입니다.</p>
+<h4>Parallel 쿼리 사용</h4>
+<h5>Parallel Queries on a Local Context Index</h5>
+<p>parallel 쿼리는 Context Index의 paralleled processing을 참고하여 병렬처리 쿼리를 수행합니다. parallel 쿼리는 색인을 만들때 지정된 parallel degree에 의해 디폴트로 작동합니다.</p>
+<p>그러나, 동시 사용자가 많은 heavy한 시스템에서 쿼리가 순차적으로 실행되는 경우 일반적으로 처음 몇 개의 Top-Ndd으로 만족 할 수 있기 때문에 parallel query의  쿼리 throurhput에는 좋지 않을 수 있습니다. 
+parallel degree는 다음과 같이 COntext index 에 적용해서 사용할 수 있습니다.</p>
+<div class="codehilite"><pre><span class="k">Alter</span> <span class="k">index</span> <span class="o">&lt;</span><span class="nb">text</span> <span class="k">index</span> <span class="n">name</span><span class="o">&gt;</span> <span class="n">NOPARALLEL</span><span class="p">;</span>
+<span class="k">Alter</span> <span class="k">index</span> <span class="o">&lt;</span><span class="nb">text</span> <span class="k">index</span> <span class="n">name</span><span class="o">&gt;</span> <span class="n">PARALLEL</span> <span class="mi">1</span><span class="p">;</span>
+</pre></div>
+
+
+<h5>Parallelizing Queries Across Oracle RAC Nodes</h5>
+<p>Oracle RAC는 light query load의 Oracle Text 쿼리 성능 향상에 도움을 줍니다.</p>
+<p>오라클 RAC 환경에서 Text data와 색인(Logical partitioned index 사용)을 물리적 파티셔닝에 의해 압축되어지고, 파티션들은 각 RAC 노드들에 의해 처리될 수 있기 때문에 오라클 텍스트 성능은 좋아 질수 있습니다.</p>
+<p>이 방법은 다중 노드 사이에서 캐시 content의 Dupliacation을 피할 수 있어 캐시 퓨전의 효과를 극대화 할 수 있습니다.</p>
+<p>10g R1에서는 RAC의 're-mastering' 특성을 살리기 위해 Text index partition은 인덱스를 만들때 datafile을 분리해서 저장 해야 했습니다. </p>
+<p>10g R2 부터는 Object level 선호도(affinity) 지원으로 특정 노드들에서 $I, $R table 색인 object 할당을 훨씬 쉽게 지원합니다.</p>
+<p>데이터가 확장되는 상황에서 RAC가 지속적으로 성능향상과 throughout향상을 제공하는 것은 아닙니다. 데이터량에 따라 SGA cache를 증가시키거나, table  파티션닝을 병행해야 합니다.</p>
+<h4>Blocking operation의 튜닝</h4>
+<p>아래와 같이 Bitntmap index를 가진 ColA, B, C는 Bit map blocking 연산을 수행합니다. </p>
+<div class="codehilite"><pre><span class="k">select</span> <span class="n">docid</span> <span class="k">from</span> <span class="n">mytab</span> <span class="k">where</span> <span class="k">contains</span><span class="p">(</span><span class="nb">text</span><span class="p">,</span> <span class="s1">&#39;oracle&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> 
+  <span class="k">AND</span> <span class="n">colA</span> <span class="o">&gt;</span> <span class="mi">5</span> 
+  <span class="k">AND</span> <span class="n">colB</span> <span class="o">&gt;</span> <span class="mi">1</span> 
+  <span class="k">AND</span> <span class="n">colC</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">;</span> 
+<span class="c1">---------------------</span>
+<span class="n">execution</span> <span class="n">plan</span>
+
+<span class="k">TABLE</span> <span class="k">ACCESS</span> <span class="k">BY</span> <span class="n">ROWIDS</span>
+  <span class="n">BITMAP</span> <span class="k">CONVERSION</span> <span class="k">TO</span> <span class="n">ROWIDS</span>
+    <span class="n">BITMAP</span> <span class="k">AND</span>
+      <span class="n">BITMAP</span> <span class="k">INDEX</span> <span class="n">COLA_BMX</span>
+      <span class="n">BITMAP</span> <span class="k">INDEX</span> <span class="n">COLB_BMX</span>
+      <span class="n">BITMAP</span> <span class="k">INDEX</span> <span class="n">COLC_BMX</span>
+      <span class="n">BITMAP</span> <span class="k">CONVERSION</span> <span class="k">FROM</span> <span class="n">ROWIDS</span>
+        <span class="n">SORT</span> <span class="k">ORDER</span> <span class="k">BY</span>
+          <span class="k">DOMAIN</span> <span class="k">INDEX</span> <span class="n">MYINDEX</span>
+</pre></div>
+
+
+<p>이 경우 Orace text는 Bitmap blocking map 연산을 수행하기 전에 Oracle text domain index로 부터 얻은 rowid와 score의 정보를 메모리에 임시적으로 저장하게 됩니다.   </p>
+<p>만약 이 Rowid와 score pair양이 커져서 'SORT_AREA_SIZE'를 초과 할 경우 메모리에 있던 pair 데이터들을 Disk로 저장하게 되어 성능에 영향을 미칩니다. </p>
+<p>따라서 이 문제를 해결하기 위한 방법으로는 아래와 예와 같이 'SORT_AREA_SIZE'를 증가 시켜주는 방법입니다.</p>
+<div class="codehilite"><pre><span class="k">alter</span> <span class="k">session</span> <span class="k">set</span> <span class="n">SORT_AREA_SIZE</span> <span class="o">=</span> <span class="mi">8300000</span><span class="p">;</span>
+</pre></div>
+
+
+<hr>
+<h3>참고 문서</h3>
+<ol>
+<li><a href="http://docs.oracle.com/database/121/CCAPP/aoptim.htm#CCAPP9247">Oracle® Text Application Developer's Guide 12c Release 1 (12.1)의 7.Tuning Oracle Text</a> [http://docs.oracle.com/database/121/CCAPP/aoptim.htm#CCAPP9247]</li>
+</ol>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

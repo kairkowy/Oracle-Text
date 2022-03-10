@@ -1,0 +1,9 @@
+LOAD DATA 
+    INFILE 'loader.dat'
+    INTO TABLE search_table 
+    REPLACE 
+    FIELDS TERMINATED BY ';'
+    (tk             INTEGER,
+     title          CHAR,
+     text_file      FILLER CHAR,
+     text           LOBFILE(text_file) TERMINATED BY EOF)

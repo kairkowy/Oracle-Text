@@ -1,0 +1,13 @@
+create user text identified by welcome1
+default tablespace users
+account unlock;
+grant connect, resource, ctxapp to scott;
+GRANT EXECUTE ON CTXSYS.CTX_CLS TO scott;
+GRANT EXECUTE ON CTXSYS.CTX_DDL TO scott;
+GRANT EXECUTE ON CTXSYS.CTX_DOC TO scott;
+GRANT EXECUTE ON CTXSYS.CTX_OUTPUT TO scott;
+GRANT EXECUTE ON CTXSYS.CTX_QUERY TO scott;
+GRANT EXECUTE ON CTXSYS.CTX_REPORT TO scott;
+GRANT EXECUTE ON CTXSYS.CTX_THES TO scott;
+GRANT EXECUTE ON CTXSYS.CTX_ULEXER TO scott;
+

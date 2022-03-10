@@ -1,0 +1,91 @@
+<%@ plsql procedure="search_html" %>
+<%@ plsql parameter="query" default="null" %>
+<%! v_results numeric := 0; %>
+
+<html>
+<head>
+  <title>search_html Search </title>
+</head>
+<body>
+
+<%
+
+If query is null Then
+%>
+
+  <center>
+    <form method=post action="search_html">
+     <b>Search for: </b>
+     <input type=text name="query" size=30>&nbsp;
+     <input type=submit value=Search>
+  </center>
+<hr>
+
+<% 
+  Else
+%>
+
+   <p>
+   <%!
+      color varchar2(6) := 'ffffff';
+   %>
+
+   <center>
+     <form method=post action="search_html">
+      <b>Search for:</b>
+      <input type=text name="query" size=30 value="<%= query %>">
+      <input type=submit value=Search>
+     </form>
+   </center>
+   <hr>
+   <p>
+
+   <%
+     -- select statement 
+    for doc in (
+                select /*+ FIRST_ROWS */ rowid, tk, title, score(1) scr
+                from search_table
+                where contains(text, query,1) >0
+                order by score(1) desc
+               ) 
+         loop
+           v_results := v_results + 1;
+           if v_results = 1 then
+
+   %>
+
+             <center>
+              <table border="0">
+                <tr bgcolor="#6699CC">
+                  <th>Score</th>
+                  <th>Title</th>
+                </tr>
+
+  <%      end if; %>
+          <tr bgcolor="#<%= color %>">
+           <td> <%= doc.scr %>% </td>
+           <td> <%= doc.title %>
+           [<a href="search_htmlServices.showHTMLDoc?p_id=
+                  <%= doc.tk %>">HTML</a>]
+           [<a href="search_htmlServices.showDoc?p_id=
+                  <%= doc.tk %>&p_query=<%= query %>">Highlight</a>]
+           </td>
+         </tr>
+
+   <%
+          if (color = 'ffffff') then
+               color := 'eeeeee';
+             else
+               color := 'ffffff';
+          end if;
+
+     end loop; 
+   %>
+
+    </table>
+   </center>
+
+<% 
+  end if;
+%>
+</body></html>

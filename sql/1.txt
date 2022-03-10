@@ -1,0 +1,10 @@
+﻿12; "비즈니스 인텔리전스 소개 " ;./data/BI_introduce.html
+13; "빅데이터 활용 가이드 " ;./data/big_data_guide_for_AFLC.pptx
+14; "데이터 베이스 트러블 슈팅 " ;./data/Database_Corruption_recovery.html
+15; "정보관리 " ;./data/Information_management_Guide.html
+1005; "대기업의 공공소프트웨어사업 참여제한 예외사업 " ;./data/ministry_2013-3.html
+1006; "오라클 빅데이터 솔루션 소개 " ;./data/Oracle_Big_Data_sloution_short.pptx
+1007; "오라클 Text 간략 소개 " ;./data/Oracle_Text_11g_Overview-concept.doc
+1008; "오라클 RAC 환경 " ;./data/RAC_configuration_process.html
+1009; "국방통계시스템 구축 사업 제안요청서 " ;./data/sample-data-1-30.hwp
+1010; "NCW 포럼지-오라클 소개" ;./data/sample-ncwforum-30.hwp

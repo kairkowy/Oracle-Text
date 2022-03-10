@@ -1,0 +1,2 @@
+select * from DR$BLOB_COLUMN_IDX$I where token_text like 'Guide%'
+/
