@@ -7,7 +7,7 @@
      * 미등록 단어들은 User-defined dictionary file에 추가하여 사용할 수 있습니다.
 
 Dictionary | File | remark
-----|---- |
+----|----|
 System | $ORACLE_HOME/ctx/data/kolx/drk2sdic.dat| -
 Grammar| $ORACLE_HOME/ctx/data/kolx/drk2gram.dat|아래 샘플 참조
 Stopword | $ORACLE_HOME/ctx/data/kolx/drk2xdic.dat|아래 샘플 참조
