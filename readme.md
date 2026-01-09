@@ -11,6 +11,7 @@
     - Oracle text의 성능 튜닝 방법ㅂ
 
 ## 문서 버전 관리
+
 날짜  | 작성자 | Change Reference
 ------|-----|-----|----
 2014-8-20| 고운용 | Oracle_text_hol_script_v2 최초 등록
