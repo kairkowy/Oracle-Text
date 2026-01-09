@@ -18,7 +18,7 @@
 ### 1.1 Oracle VM Virtual Box 환경
 * Oracle Virtual Box는 [오라클 홈페이지](http://www.oracle.com/technetwork/server-storage/virtualbox/downloads/index.html)에서 다운로드 가능하며, VM 이미지 파일은 별도로 제공합니다. 아래 환경정보는 제공되는 Oracle Virtual Box 이미지를 기준으로 작성된 환경정보입니다. Oracle VM Virtual Box가 아닌 환경인 경우에는 Oracle 12c 버전의 DB만으로도 진행이 가능합니다.  
 
-
+----------- | ----    
 구분  |   내   용 |
 ----------- | ----    
 OS version | Oracle Linux   
