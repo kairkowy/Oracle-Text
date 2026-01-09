@@ -164,10 +164,10 @@ Index created.
  
 table name | 내용
 ----|---
-DR$`index_name`$I | index data를 가진 table
-DR$`index_name`$K | keymap table
-DR$`index_name`$N | negative list table
-DR$`index_name`$R | rowid 정보를 가진 table  
+DR$\`index_name\`$I | index data를 가진 table
+DR$\`index_name\`$K | keymap table
+DR$\`index_name\`$N | negative list table
+DR$\`index_name\`$R | rowid 정보를 가진 table  
 
 * 참고  
 Oracle Text 인덱스는 inverted Index 구조로 물리적으로는 테이블 형태로 정의됩니다. Inverted Index를 사용하는 이유는 문서의 삭제 및 변경에 따른 인덱스 테이블의 변경을 효율적으로 수행하기 위해서입니다.  
