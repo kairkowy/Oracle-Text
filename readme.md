@@ -8,12 +8,4 @@
 - KOREAN_MORPH_LEXER.md
     - Oracle DB에 포함되어 있는 한글 형태소 분석기(KOREAN_MORPH_LEXER)에 대한 세부 내용
 - Oracle_Text_Tuning.md
-    - Oracle text의 성능 튜닝 방법ㅂ
-
-## 문서 버전 관리
-
-날짜  | 작성자 | Change Reference
-------|-----|-----|----
-2014-8-20| 고운용 | Oracle_text_hol_script_v2 최초 등록
-2014-9-15| 고운용 | KOREAN_MORPH_LEXER 최초 등록
-2014-9-17| 고운용 | Oracle_Text_Tuning 최초 등록
+    - Oracle text의 성능 튜닝 방법
