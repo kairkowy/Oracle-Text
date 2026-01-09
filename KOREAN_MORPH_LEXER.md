@@ -28,19 +28,19 @@ User-defined | $ORACLE_HOME/ctx/data/kolx/drk2udic.dat|아래 샘플 참조
 * KOREAN_MORPH_LEXEX 속성  
 
 Attribute|Attribute value  
-----------|-------------  
-    verb_adjective| 동사, 형용사, 부사 인덱싱 여부 지정. TRUE or False, Default is FALSE.
-    one_char_word| 음절 인덱싱 여부 지정, TRUE or False,Default is FALSE.
-    number|숫자 인덱싱 여부 지정. TRUE or False, Default is FALSE.
-    user_dic|User dictionary 인덱싱 여부 지정. TRUE or False, Default is TRUE.
-    stop_dic|stop-word dictionary 사용 여부. TRUE or False, Default is TRUE. .
-    composite|복합명사 스타일 지정. COMPOSITE_ONLY : 복합명사만 인덱싱. NGRAM : 복합명사를 구성한 모든 단어를 인덱싱. COMPONENT_WORD : 단일명사와 해당 복합명사 인덱싱. Default is COMPONENT_WORD.
-    morpheme|형태소 분석 여부 지정. TRUE or False, "False" 경우 공백과 같은 구분자에 의해 구분된 단어들로 토큰 생성. Default is TRUE.
-    to_upper|영어 대문자로 변환 여부 지정. TRUE or False, Default is TRUE.
-    hanja|한자들에 대한 인덱싱 여부 지정. TRUE or False, "FALSE" 경우 한글로 변환. Default is FALSE.
-    long_word|한글에서 16 음정 이상의 긴 단어에 대한 인덱싱 여부 지정. TRUE or False, Default is FALSE.
-    japanese|Unicode에 있는 일본 문자들의 인덱싱 여부 지정.(only in the 2-byte area). TRUE or False, Default is FALSE.
-    english|alphanumeric strings 인덱싱 여부 지정. TRUE or False, Default is TRUE.
+----------|------------
+verb_adjective| 동사, 형용사, 부사 인덱싱 여부 지정. TRUE or False, Default is FALSE.
+one_char_word| 음절 인덱싱 여부 지정, TRUE or False,Default is FALSE.
+number|숫자 인덱싱 여부 지정. TRUE or False, Default is FALSE.
+user_dic|User dictionary 인덱싱 여부 지정. TRUE or False, Default is TRUE.
+stop_dic|stop-word dictionary 사용 여부. TRUE or False, Default is TRUE. .
+composite|복합명사 스타일 지정. COMPOSITE_ONLY : 복합명사만 인덱싱. NGRAM : 복합명사를 구성한 모든 단어를 인덱싱. COMPONENT_WORD : 단일명사와 해당 복합명사 인덱싱. Default is COMPONENT_WORD.
+morpheme|형태소 분석 여부 지정. TRUE or False, "False" 경우 공백과 같은 구분자에 의해 구분된 단어들로 토큰 생성. Default is TRUE.
+to_upper|영어 대문자로 변환 여부 지정. TRUE or False, Default is TRUE.
+hanja|한자들에 대한 인덱싱 여부 지정. TRUE or False, "FALSE" 경우 한글로 변환. Default is FALSE.
+long_word|한글에서 16 음정 이상의 긴 단어에 대한 인덱싱 여부 지정. TRUE or False, Default is FALSE.
+japanese|Unicode에 있는 일본 문자들의 인덱싱 여부 지정.(only in the 2-byte area). TRUE or False, Default is FALSE.
+english|alphanumeric strings 인덱싱 여부 지정. TRUE or False, Default is TRUE.
 
  
 * KOREAN_MORPH_LEXER 예제 - NGRAM 예제  
