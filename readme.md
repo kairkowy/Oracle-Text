@@ -1,7 +1,6 @@
 
 ## 문서 소개
-본 문서는 오라클 Text Option에 대한 이해를 증진시키기 위해 작성되었으며  
-각 파일별로 Oracle text에 대한 자세한 내용을 수록하였습니다.
+이 문서는 오라클 Text Option에 대한 이해를 증진시키기 위해 작성되었으며 각 파일별로 Oracle text에 대한 자세한 내용을 수록하였습니다.
 - Oracle_text_hol_script_v2.md
     - Oracle Text 색인 및 주요 기능에 대한 실습
     - Document service sample code
