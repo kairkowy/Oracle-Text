@@ -163,7 +163,7 @@ Index created.
 * Oracle Text의 Index는 테이블에 생성되며, 인덱스 테이블과 원 테이블 간의  reference는 중간의 mapping table을 통해서 이루어집니다. CONTEXT 인덱스는 인덱스 생성시 아래과 같이 4개의 관련 Table들이 생성됩니다.    
  
 table name | 내용
-----|
+----|---
 DR$`index_name`$I | index data를 가진 table
 DR$`index_name`$K | keymap table
 DR$`index_name`$N | negative list table
