@@ -6,12 +6,12 @@
      * system(drk2sdic.dat) 사전은 수정이 불가합니다.
      * 미등록 단어들은 User-defined dictionary file에 추가하여 사용할 수 있습니다.
 
->>>Dictionary | File | remark
->>>----|---- |
->>>System | $ORACLE_HOME/ctx/data/kolx/drk2sdic.dat| -
->>>Grammar| $ORACLE_HOME/ctx/data/kolx/drk2gram.dat|아래 샘플 참조
->>>Stopword | $ORACLE_HOME/ctx/data/kolx/drk2xdic.dat|아래 샘플 참조
->>>User-defined | $ORACLE_HOME/ctx/data/kolx/drk2udic.dat|아래 샘플 참조
+Dictionary | File | remark
+----|---- |
+System | $ORACLE_HOME/ctx/data/kolx/drk2sdic.dat| -
+Grammar| $ORACLE_HOME/ctx/data/kolx/drk2gram.dat|아래 샘플 참조
+Stopword | $ORACLE_HOME/ctx/data/kolx/drk2xdic.dat|아래 샘플 참조
+User-defined | $ORACLE_HOME/ctx/data/kolx/drk2udic.dat|아래 샘플 참조
 
 - 지원되는 DB character set은 KO16KSC5601, KO16MSWIN949, UTF8, AL32UTF8 4종 입니다.
 - Unicode 지원
